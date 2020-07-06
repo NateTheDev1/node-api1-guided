@@ -66,6 +66,22 @@ server.post("/api/lessons", (req, res) => {
   res.json(newLesson);
 });
 
+server.delete("/api/hubs/:hub", (req, res) => {
+  const newHubs = hubs.filter((hub) => {
+    return hub.id !== req.params.hub;
+  });
+  hubs = newHubs;
+  res.json(hubs);
+});
+
+server.delete("/api/lessons/:lesson", (req, res) => {
+  const newLessons = lessons.filter((lesson) => {
+    return lesson.id !== req.params.lesson;
+  });
+  lessons = newLessons;
+  res.json(lessons);
+});
+
 server.listen(PORT, () => {
   console.log(`server running... on port ${PORT}`);
 });
